@@ -2,9 +2,20 @@
     <div style="padding: 2rem;">
         <p style="font-size: 2rem;border-right: .3rem solid #F94A29;padding-right: .5rem;">آخرین مطالب</p>
         <div class="splide" role="group" style="width: 100%;padding: .1rem;">
+            <div class="splide__arrows splide__arrows--ltr">
+                <button class="splide__arrow splide__arrow--prev" type="button" aria-label="Previous slide"
+                    aria-controls="splide01-track">
+                    <i class="pi pi-angle-right"></i>
+                </button>
+                <button class="splide__arrow splide__arrow--next" type="button" aria-label="Next slide"
+                aria-controls="splide01-track">
+                <i class="pi pi-angle-left"></i>
+                </button>
+            </div>
             <div class="splide__track">
                 <ul class="splide__list">
-                    <li v-for="i in 10" :key="i" class="splide__slide" style="padding: .2rem;">
+                    <li v-for="i in 10" :key="i" class="splide__slide"
+                        style="padding: .2rem;display: flex;justify-content: center;">
                         <Card style="width: 300px;border-radius: .3rem;font-family: Yekan;">
                             <template #header>
                                 <div
@@ -28,7 +39,8 @@
                                 <div
                                     style="display: flex;align-items: center;gap: 5px;flex-direction: row-reverse;color: red;">
                                     <Button label="ادامه مطلب" icon="pi pi-arrow-left" class="p-button-sm p-button-help"
-                                        style="direction: ltr;font-family: Yekan;font-size: 1rem;" @click="pushBlog(allNews.title)" />
+                                        style="direction: ltr;font-family: Yekan;font-size: 1rem;"
+                                        @click="pushBlog(allNews.title)" />
                                 </div>
                             </template>
                         </Card>
@@ -62,19 +74,19 @@ export default {
 
         onMounted(() => {
             const splide = new Splide('.splide', {
-                autoWidth: true,
+                perPage: 4,
                 perMove: 1,
                 direction: 'rtl',
                 wheel: true,
                 pagination: false,
-                arrows: false,
-                gap: '.3rem'
+                arrows: true,
+                gap: '.2em'
             });
 
             splide.mount();
         })
 
-        function pushBlog(title:string) {
+        function pushBlog(title: string) {
             router.push({
                 name: "Blog",
                 params: { id: title },
@@ -90,6 +102,20 @@ export default {
 </script>
 
 <style lang="scss">
+.splide__arrow {
+    background-color: #ccc;
+    border-radius: .2rem;
+    height: 5.5em;
+    width: 1.5em;
 
+}
+
+.splide__arrows--rtl .splide__arrow--prev {
+    right: -1.2em;
+}
+
+.splide__arrows--rtl .splide__arrow--next {
+    left: -1.2em;
+}
 </style>
 
