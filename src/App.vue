@@ -9,6 +9,11 @@
 </template>
 
 <style lang="scss">
+@font-face {
+  font-family: "Yekan";
+  src: url(../src/assets/fonts/yekan/Yekan.ttf);
+}
+
 .page-enter-active,
 .page-leave-active {
   transition: all 0.3s ease;
@@ -21,6 +26,7 @@
 }
 
 body {
+  font-family: Yekan;
   margin: 0;
   padding: 0;
   direction: rtl;
